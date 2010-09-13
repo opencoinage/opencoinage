@@ -1,0 +1,2 @@
+require 'opencoinage'
+include OpenCoinage
