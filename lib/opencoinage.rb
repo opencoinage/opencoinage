@@ -1,6 +1,7 @@
 require 'bigdecimal'
 require 'digest'
 require 'stringio'
+require 'rdf'
 require 'uuid'
 
 module OpenCoinage
