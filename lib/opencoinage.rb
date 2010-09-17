@@ -5,5 +5,6 @@ require 'rdf'
 require 'uuid'
 
 module OpenCoinage
-  autoload :VERSION, 'opencoinage/version'
+  autoload :Vocabulary, 'opencoinage/vocabulary'
+  autoload :VERSION,    'opencoinage/version'
 end
