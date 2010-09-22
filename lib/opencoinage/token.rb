@@ -2,6 +2,8 @@ module OpenCoinage
   ##
   # A digital currency token.
   class Token
+    RDF_TYPE = Vocabulary[:Token]
+
     ##
     # Initializes a new token.
     #
@@ -75,9 +77,30 @@ module OpenCoinage
     # Returns the JSON representation of this token.
     #
     # @return [String]
+    # @see    http://en.wikipedia.org/wiki/JSON
+    # @see    http://json.rubyforge.org/
     def to_json
       require 'json' unless defined?(::JSON)
       to_hash.to_json
+    end
+
+    ##
+    # Returns the RDF representation of this token.
+    #
+    # @param  [Hash{Symbol => Object}] options
+    # @option options [RDF::Resource]  :context (nil)
+    # @option options [RDF::Resource]  :subject (RDF::Node(object_id))
+    # @return [RDF::Graph]
+    # @see    http://en.wikipedia.org/wiki/Resource_Description_Framework
+    # @see    http://rdf.rubyforge.org/RDF/Graph.html
+    def to_rdf(options = {})
+      require 'rdf' unless defined?(::RDF)
+      RDF::Graph.new(options[:context]) do |graph|
+        subject = options[:subject] || RDF::Node(object_id)
+        graph << [subject, RDF.type,                self.class.const_get(:RDF_TYPE)]
+        graph << [subject, Vocabulary[:identifier], identifier]
+        graph << [subject, Vocabulary[:signature],  signature] if signed?
+      end
     end
   end # Token
 end # OpenCoinage
