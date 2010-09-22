@@ -5,6 +5,28 @@ module OpenCoinage
     RDF_TYPE = Vocabulary[:Token]
 
     ##
+    # Parses and returns the given Base62-encoded token.
+    #
+    # @example
+    #   Token.parse("deadbeef")   #=> Token.new(139648545098945, nil)
+    #   Token.parse("deadbeef:")  #=> Token.new(139648545098945, nil)
+    #   Token.parse("dead:beef")  #=> Token.new(9450823, 8974417)
+    #
+    # @param  [String, #to_str] input
+    #   a Base62-based string representation of the token
+    # @return [Token] the parsed token
+    # @raise  [ArgumentError] if `input` is not a Base62 string
+    def self.parse(input)
+      identifier, signature = (input = Bitcache.read(input).strip).split(':', 2)
+      signature = nil if signature && signature.empty?
+      if Base62.regexp === identifier && (signature.nil? || Base62.regexp === signature)
+        self.new(Base62.decode(identifier), signature ? Base62.decode(signature) : nil)
+      else
+        raise ArgumentError, "expected a Base62-encoded token, but got #{input.inspect}"
+      end
+    end
+
+    ##
     # Initializes a new token.
     #
     # @param  [Integer, #to_i] identifier
