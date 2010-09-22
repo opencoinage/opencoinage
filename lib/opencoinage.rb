@@ -10,4 +10,6 @@ module OpenCoinage
   autoload :Token,      'opencoinage/token'
   autoload :Vocabulary, 'opencoinage/vocabulary'
   autoload :VERSION,    'opencoinage/version'
+
+  Base62 = Bitcache::Encoder::Base62
 end
