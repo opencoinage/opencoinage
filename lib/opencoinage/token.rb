@@ -40,7 +40,18 @@ module OpenCoinage
     #
     # @return [String] a Base62 string
     def to_s
-      [Base62.encode(identifier), signature ? Base62.encode(signature) : nil].compact.join(':') # FIXME
+      to_a.compact.map { |n| Base62.encode(n) }.join(':') # FIXME
+    end
+
+    ##
+    # Returns the array representation of this token.
+    #
+    # @example
+    #   identifier, signature = token.to_a
+    #
+    # @return [Array]
+    def to_a
+      [identifier, signature]
     end
 
     ##
