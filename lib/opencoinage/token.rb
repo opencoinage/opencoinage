@@ -28,6 +28,15 @@ module OpenCoinage
     attr_reader :signature
 
     ##
+    # Returns `true` if this token contains a digital signature, `false`
+    # otherwise.
+    #
+    # @return [Boolean]
+    def signed?
+      !!signature
+    end
+
+    ##
     # Returns the integer representation of this token.
     #
     # @return [Integer] the token `identifier`
