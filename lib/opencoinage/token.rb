@@ -18,6 +18,22 @@ module OpenCoinage
     attr_reader :id
 
     ##
+    # Returns the integer representation of this token.
+    #
+    # @return [Integer] the token `id`
+    def to_i
+      id
+    end
+
+    ##
+    # Returns the string representation of this token.
+    #
+    # @return [String] the token `id` encoded as a Base62 string
+    def to_s
+      Bitcache::Encoder::Base62.encode(to_i)
+    end
+
+    ##
     # Returns the hash table representation of this token.
     #
     # @return [Hash]
