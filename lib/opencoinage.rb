@@ -1,6 +1,7 @@
 require 'bigdecimal'
 require 'digest'
 require 'stringio'
+require 'bitcache'   # @see http://rubygems.org/gems/bitcache
 require 'rdf'        # @see http://rubygems.org/gems/rdf
 require 'uuid'       # @see http://rubygems.org/gems/uuid
 
