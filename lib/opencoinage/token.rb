@@ -16,5 +16,22 @@ module OpenCoinage
     #
     # @return [Integer]
     attr_reader :id
+
+    ##
+    # Returns the hash table representation of this token.
+    #
+    # @return [Hash]
+    def to_hash
+      {:id => id}
+    end
+
+    ##
+    # Returns the JSON representation of this token.
+    #
+    # @return [String]
+    def to_json
+      require 'json' unless defined?(::JSON)
+      to_hash.to_json
+    end
   end # Token
 end # OpenCoinage
