@@ -5,32 +5,33 @@ module OpenCoinage
     ##
     # Initializes a new token.
     #
-    # @param  [Integer, #to_i] id
-    #   a unique identifier
-    def initialize(id)
-      @id = id.to_i
+    # @param  [Integer, #to_i] identifier
+    #   a unique token identifier
+    def initialize(identifier)
+      @identifier = identifier.to_i
     end
 
     ##
     # A token-specific unique identifier of arbitrary length.
     #
     # @return [Integer]
-    attr_reader :id
+    attr_reader  :identifier
+    alias_method :id, :identifier
 
     ##
     # Returns the integer representation of this token.
     #
-    # @return [Integer] the token `id`
+    # @return [Integer] the token `identifier`
     def to_i
-      id
+      identifier
     end
 
     ##
     # Returns the string representation of this token.
     #
-    # @return [String] the token `id` encoded as a Base62 string
+    # @return [String] the token `identifier` encoded as a Base62 string
     def to_s
-      Bitcache::Encoder::Base62.encode(to_i)
+      Base62.encode(to_i)
     end
 
     ##
@@ -38,7 +39,7 @@ module OpenCoinage
     #
     # @return [Hash]
     def to_hash
-      {:id => id}
+      {:identifier => identifier}
     end
 
     ##
