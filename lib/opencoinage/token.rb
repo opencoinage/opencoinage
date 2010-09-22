@@ -6,17 +6,26 @@ module OpenCoinage
     # Initializes a new token.
     #
     # @param  [Integer, #to_i] identifier
-    #   a unique token identifier
-    def initialize(identifier)
+    #   a unique token identifier of arbitrary length
+    # @param  [Integer, #to_i] signature
+    #   the issuer's digital signature
+    def initialize(identifier, signature = nil)
       @identifier = identifier.to_i
+      @signature  = signature ? signature.to_i : nil
     end
 
     ##
-    # A token-specific unique identifier of arbitrary length.
+    # The token's unique identifier.
     #
     # @return [Integer]
     attr_reader  :identifier
     alias_method :id, :identifier
+
+    ##
+    # The issuer's digital signature.
+    #
+    # @return [Integer]
+    attr_reader :signature
 
     ##
     # Returns the integer representation of this token.
@@ -29,9 +38,9 @@ module OpenCoinage
     ##
     # Returns the string representation of this token.
     #
-    # @return [String] the token `identifier` encoded as a Base62 string
+    # @return [String] a Base62 string
     def to_s
-      Base62.encode(to_i)
+      [Base62.encode(identifier), signature ? Base62.encode(signature) : nil].compact.join(':') # FIXME
     end
 
     ##
@@ -39,7 +48,7 @@ module OpenCoinage
     #
     # @return [Hash]
     def to_hash
-      {:identifier => identifier}
+      {:identifier => identifier, :signature => signature}
     end
 
     ##
