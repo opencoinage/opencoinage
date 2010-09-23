@@ -7,6 +7,8 @@ module OpenCoinage
   class Vocabulary < RDF::Vocabulary('http://opencoinage.org/rdf/')
     property :amount
     property :expires
+    property :identifier
     property :issuer
+    property :signature
   end # Vocabulary
 end # OpenCoinage
