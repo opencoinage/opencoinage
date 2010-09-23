@@ -6,6 +6,7 @@ require 'rdf'        # @see http://rubygems.org/gems/rdf
 require 'uuid'       # @see http://rubygems.org/gems/uuid
 
 module OpenCoinage
+  autoload :Issuer,     'opencoinage/issuer'
   autoload :Currency,   'opencoinage/currency'
   autoload :Token,      'opencoinage/token'
   autoload :Vocabulary, 'opencoinage/vocabulary'
