@@ -116,7 +116,6 @@ module OpenCoinage
     # @see    http://en.wikipedia.org/wiki/Resource_Description_Framework
     # @see    http://rdf.rubyforge.org/RDF/Graph.html
     def to_rdf(options = {})
-      require 'rdf' unless defined?(::RDF)
       RDF::Graph.new(options[:context]) do |graph|
         subject = options[:subject] || RDF::Node(object_id)
         graph << [subject, RDF.type,                self.class.const_get(:RDF_TYPE)]

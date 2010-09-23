@@ -19,5 +19,19 @@ module OpenCoinage
     # @return [RDF::URI]
     attr_reader  :uri
     alias_method :to_uri, :uri
+
+    ##
+    # Returns the RDF representation of this issuer.
+    #
+    # @param  [Hash{Symbol => Object}] options
+    # @option options [RDF::Resource]  :context (nil)
+    # @return [RDF::Graph]
+    # @see    http://en.wikipedia.org/wiki/Resource_Description_Framework
+    # @see    http://rdf.rubyforge.org/RDF/Graph.html
+    def to_rdf(options = {})
+      RDF::Graph.new(options[:context]) do |graph|
+        graph << [uri, RDF.type, self.class.const_get(:RDF_TYPE)]
+      end
+    end
   end # Issuer
 end # OpenCoinage
