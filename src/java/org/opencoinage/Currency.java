@@ -14,7 +14,7 @@ public class Currency {
    *
    * @see java.net.URI
    */
-  public URI uri;
+  public final URI uri;
 
   /**
    * The issuer of this currency.
@@ -25,14 +25,14 @@ public class Currency {
    * @param uri a valid URI identifying the currency
    * @throws URISyntaxException if <code>uri</code> is not a valid URI
    */
-  public Currency(String uri) throws URISyntaxException {
+  public Currency(final String uri) throws URISyntaxException {
     this.uri = new URI(uri);
   }
 
   /**
    * @param uri a valid URI identifying the currency
    */
-  public Currency(URI uri) {
+  public Currency(final URI uri) {
     this.uri = uri;
   }
 }

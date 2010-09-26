@@ -11,7 +11,7 @@ public class Token {
   /**
    * The token's unique identifier.
    */
-  public BigInteger identifier;
+  public final BigInteger identifier;
 
   /**
    * The issuer's digital signature.
@@ -22,7 +22,7 @@ public class Token {
    * @param identifier a unique token identifier of arbitrary length
    * @param signature  the issuer's digital signature
    */
-  public Token(BigInteger identifier, BigInteger signature) {
+  public Token(final BigInteger identifier, final BigInteger signature) {
     this.identifier = identifier;
     this.signature  = signature;
   }
@@ -30,7 +30,7 @@ public class Token {
   /**
    * @param identifier a unique token identifier of arbitrary length
    */
-  public Token(BigInteger identifier) {
+  public Token(final BigInteger identifier) {
     this(identifier, null);
   }
 

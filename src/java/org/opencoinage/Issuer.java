@@ -14,20 +14,20 @@ public class Issuer {
    *
    * @see java.net.URI
    */
-  public URI uri;
+  public final URI uri;
 
   /**
    * @param uri a valid URI identifying the issuer
    * @throws URISyntaxException if <code>uri</code> is not a valid URI
    */
-  public Issuer(String uri) throws URISyntaxException {
+  public Issuer(final String uri) throws URISyntaxException {
     this.uri = new URI(uri);
   }
 
   /**
    * @param uri a valid URI identifying the issuer
    */
-  public Issuer(URI uri) {
+  public Issuer(final URI uri) {
     this.uri = uri;
   }
 }
