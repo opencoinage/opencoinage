@@ -1,6 +1,7 @@
 package org.opencoinage;
 
 import java.math.BigInteger;
+import java.util.Map;
 
 /**
  * A digital currency token.
@@ -32,6 +33,28 @@ public class Token {
    */
   public Token(final BigInteger identifier) {
     this(identifier, null);
+  }
+
+  /**
+   * @param options key-value mappings for fields
+   * @throws NullPointerException
+   *   if <code>options</code> is null
+   * @throws IllegalArgumentException
+   *   if <code>options</code> does not contain an "identifier" key
+   */
+  public Token(final Map<String, ?> options) {
+    if (options == null) {
+      throw new NullPointerException("options must not be null");
+    }
+    if (!options.containsKey("identifier")) {
+      throw new IllegalArgumentException("options must contain the key 'identifier'");
+    }
+    else {
+      this.identifier = (BigInteger)options.get("identifier");
+    }
+    if (options.containsKey("signature")) {
+      this.signature = (BigInteger)options.get("signature");
+    }
   }
 
   /**
