@@ -23,6 +23,18 @@ describe "org.opencoinage.Token" do
     end
   end
 
+  context "Token(long, long)" do
+    it "accepts two arguments" do
+      lambda { Token.new(12345678, 87654321) }.should_not raise_error
+    end
+  end
+
+  context "Token(long)" do
+    it "accepts one argument" do
+      lambda { Token.new(12345678) }.should_not raise_error
+    end
+  end
+
   context "Token(Map)" do
     it "accepts one argument" do
       # TODO

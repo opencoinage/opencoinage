@@ -36,6 +36,21 @@ public class Token {
   }
 
   /**
+   * @param identifier a unique token identifier
+   */
+  public Token(final long identifier, final long signature) {
+    this(BigInteger.valueOf(identifier), BigInteger.valueOf(signature));
+  }
+
+  /**
+   * @param identifier a unique token identifier
+   * @param signature  the issuer's digital signature
+   */
+  public Token(final long identifier) {
+    this(BigInteger.valueOf(identifier), null);
+  }
+
+  /**
    * @param options key-value mappings for fields
    * @throws NullPointerException
    *   if <code>options</code> is null
