@@ -1,6 +1,6 @@
 require File.join(File.dirname(__FILE__), 'spec_helper')
 
-describe "org.opencoinage.Issuer" do
+describe "org.opencoinage" do
   Issuer = org.opencoinage.Issuer
 
   context "Issuer.RDF_TYPE" do

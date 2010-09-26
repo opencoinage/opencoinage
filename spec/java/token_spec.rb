@@ -1,6 +1,6 @@
 require File.join(File.dirname(__FILE__), 'spec_helper')
 
-describe "org.opencoinage.Token" do
+describe "org.opencoinage" do
   Token = org.opencoinage.Token
 
   context "Token.RDF_TYPE" do
