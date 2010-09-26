@@ -56,6 +56,7 @@ module OpenCoinage
     # otherwise.
     #
     # @return [Boolean]
+    #   `true` if the token is digitally signed, `false` otherwise
     def signed?
       !!signature
     end
@@ -83,6 +84,7 @@ module OpenCoinage
     #   identifier, signature = token.to_a
     #
     # @return [Array]
+    #   a two-element array containing the `identifier` and `signature`
     def to_a
       [identifier, signature]
     end

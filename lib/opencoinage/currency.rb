@@ -8,6 +8,7 @@ module OpenCoinage
     # Initializes the currency.
     #
     # @param  [RDF::URI, String, #to_s] uri
+    #   a valid URI identifying the currency
     # @param  [Hash{Symbol => Object}]  options
     # @option options [Issuer] :issuer (nil)
     def initialize(uri = nil, options = {})
@@ -16,7 +17,7 @@ module OpenCoinage
     end
 
     ##
-    # The URI of this currency.
+    # The URI identifying this currency.
     #
     # @return [RDF::URI]
     attr_reader  :uri

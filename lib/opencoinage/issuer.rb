@@ -8,13 +8,14 @@ module OpenCoinage
     # Initializes the issuer.
     #
     # @param  [RDF::URI, String, #to_s] uri
+    #   a valid URI identifying the issuer
     # @param  [Hash{Symbol => Object}]  options
     def initialize(uri = nil, options = {})
       @uri = RDF::URI(uri || UUID.generate(:urn))
     end
 
     ##
-    # The URI of this issuer.
+    # The URI identifying this issuer.
     #
     # @return [RDF::URI]
     attr_reader  :uri
