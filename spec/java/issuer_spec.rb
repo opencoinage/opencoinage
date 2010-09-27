@@ -56,4 +56,14 @@ describe "org.opencoinage" do
       # TODO
     end
   end
+
+  context "Issuer#name" do
+    it "returns a string" do
+      # TODO
+    end
+
+    it "is mutable" do
+      # TODO
+    end
+  end
 end

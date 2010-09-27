@@ -18,6 +18,13 @@ public class Issuer {
   public final URI uri;
 
   /**
+   * The name of this issuer.
+   *
+   * @see http://xmlns.com/foaf/spec/#term_name
+   */
+  public String name;
+
+  /**
    * @param uri a valid URI identifying the issuer
    */
   public Issuer(final URI uri) {
@@ -31,7 +38,9 @@ public class Issuer {
   public Issuer(final URI uri, final Map<String, ?> options) {
     this.uri = uri;
     if (options != null) {
-      // TODO
+      if (options.containsKey("name")) {
+        this.name = (String)options.get("name");
+      }
     }
   }
 
