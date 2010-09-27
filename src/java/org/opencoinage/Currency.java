@@ -18,7 +18,16 @@ public class Currency {
   public final URI uri;
 
   /**
+   * The name of this currency.
+   *
+   * @see http://xmlns.com/foaf/spec/#term_name
+   */
+  public String name;
+
+  /**
    * The issuer of this currency.
+   *
+   * @see http://opencoinage.org/rdf/issuer
    */
   public Issuer issuer;
 
@@ -36,6 +45,9 @@ public class Currency {
   public Currency(final URI uri, final Map<String, ?> options) {
     this.uri = uri;
     if (options != null) {
+      if (options.containsKey("name")) {
+        this.name = (String)options.get("name");
+      }
       if (options.containsKey("issuer")) {
         this.issuer = (Issuer)options.get("issuer"); 
       }

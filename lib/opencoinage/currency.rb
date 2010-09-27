@@ -10,24 +10,36 @@ module OpenCoinage
     # @param  [RDF::URI, String, #to_s] uri
     #   a valid URI identifying the currency
     # @param  [Hash{Symbol => Object}]  options
+    # @option options [String] :name   (nil)
+    #   the name of the currency
     # @option options [Issuer] :issuer (nil)
+    #   the issuer of the currency
     def initialize(uri = nil, options = {})
       @uri    = RDF::URI(uri || UUID.generate(:urn))
-      @issuer = options[:issuer]
+      @name   = options[:name]   if options.has_key?(:name)
+      @issuer = options[:issuer] if options.has_key?(:issuer)
     end
 
     ##
     # The URI identifying this currency.
     #
     # @return [RDF::URI]
-    attr_reader  :uri
+    attr_reader :uri
     alias_method :to_uri, :uri
+
+    ##
+    # The name of this currency.
+    #
+    # @return [String]
+    # @see    http://xmlns.com/foaf/spec/#term_name
+    attr_accessor :name
 
     ##
     # The issuer of this currency.
     #
     # @return [Issuer]
-    attr_reader :issuer
+    # @see    http://opencoinage.org/rdf/issuer
+    attr_accessor :issuer
 
     ##
     # Returns the RDF representation of this currency.
@@ -40,6 +52,7 @@ module OpenCoinage
     def to_rdf(options = {})
       RDF::Graph.new(options[:context]) do |graph|
         graph << [uri, RDF.type, self.class.const_get(:RDF_TYPE)]
+        graph << [uri, RDF::FOAF.name, name] if name
         graph << [uri, Vocabulary[:issuer], issuer.to_uri] if issuer
       end
     end
