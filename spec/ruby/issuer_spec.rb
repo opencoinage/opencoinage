@@ -12,4 +12,16 @@ describe OpenCoinage::Issuer do
       # TODO
     end
   end
+
+  context "Issuer#to_hash" do
+    it "returns a Hash" do
+      # TODO
+    end
+  end
+
+  context "Issuer#to_json" do
+    it "returns a JSON string" do
+      # TODO
+    end
+  end
 end
