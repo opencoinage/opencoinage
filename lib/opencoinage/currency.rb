@@ -42,6 +42,25 @@ module OpenCoinage
     attr_accessor :issuer
 
     ##
+    # Returns the hash table representation of this currency.
+    #
+    # @return [Hash]
+    def to_hash
+      {:name => name, :issuer => issuer}
+    end
+
+    ##
+    # Returns the JSON representation of this currency.
+    #
+    # @return [String]
+    # @see    http://en.wikipedia.org/wiki/JSON
+    # @see    http://json.rubyforge.org/
+    def to_json
+      require 'json' unless defined?(::JSON)
+      to_hash.merge(:issuer => issuer.to_uri.to_s).to_json
+    end
+
+    ##
     # Returns the RDF representation of this currency.
     #
     # @param  [Hash{Symbol => Object}] options
