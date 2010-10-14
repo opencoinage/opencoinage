@@ -40,7 +40,7 @@ public class Client {
    * @return an "x.y.z" version number string
    */
   public String version() {
-    return "0.0.0"; // FIXME
+    return "0.0.1"; // FIXME
   }
 
   /**
