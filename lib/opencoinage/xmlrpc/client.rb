@@ -1,8 +1,11 @@
+require 'xmlrpc/client'
+
 module OpenCoinage; module XMLRPC
   ##
-  # An OpenCoinage XML-RPC API client.
+  # An OpenCoinage XML-RPC API client implementation.
   #
   # @see http://opencoinage.org/api/xmlrpc
+  # @see http://ruby-doc.org/stdlib/libdoc/xmlrpc/rdoc/classes/XMLRPC/Client.html
   class Client
     ##
     # Initializes the XML-RPC client.

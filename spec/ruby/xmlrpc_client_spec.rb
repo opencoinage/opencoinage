@@ -1,4 +1,5 @@
 require File.join(File.dirname(__FILE__), 'spec_helper')
+require 'opencoinage/xmlrpc/client'
 
 describe OpenCoinage::XMLRPC::Client do
   context "Client#url" do
