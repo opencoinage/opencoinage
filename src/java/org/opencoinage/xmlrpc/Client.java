@@ -38,6 +38,7 @@ public class Client {
    * Returns the server's version number.
    *
    * @return an "x.y.z" version number string
+   * @see    http://opencoinage.org/api/xmlrpc#version
    */
   public String version() {
     return "0.0.1"; // FIXME
@@ -47,8 +48,9 @@ public class Client {
    * Returns <code>true</code> if the given <code>token</code> is valid,
    * <code>false</code> otherwise.
    *
-   * @param token the token to verify
+   * @param  token the token to verify
    * @return <code>true</code> or <code>false</code>
+   * @see    http://opencoinage.org/api/xmlrpc#verify
    */
   public boolean verify(Token token) {
     return false; // TODO
@@ -57,8 +59,9 @@ public class Client {
   /**
    * Returns information about the given <code>token</code>.
    *
-   * @param token the token to describe
+   * @param  token the token to describe
    * @return a key-value mapping describing the token
+   * @see    http://opencoinage.org/api/xmlrpc#describe
    */
   public Map<String, ?> describe(Token token) {
     return null; // TODO
@@ -67,8 +70,9 @@ public class Client {
   /**
    * Issues a new token equivalent to the given <code>token</code>.
    *
-   * @param token the valid token to reissue
+   * @param  token the valid token to reissue
    * @return a new token
+   * @see    http://opencoinage.org/api/xmlrpc#reissue
    */
   public Token reissue(Token token) {
     return reissue(token, null);
@@ -77,9 +81,10 @@ public class Client {
   /**
    * Issues a new token equivalent to the given <code>token</code>.
    *
-   * @param token the valid token to reissue
-   * @param identifier a unique identifier for the new token
+   * @param  token the valid token to reissue
+   * @param  identifier a unique identifier for the new token
    * @return a new token
+   * @see    http://opencoinage.org/api/xmlrpc#reissue
    */
   public Token reissue(Token token, BigInteger identifier) {
     return null; // TODO

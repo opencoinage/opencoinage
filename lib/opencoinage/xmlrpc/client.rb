@@ -27,6 +27,7 @@ module OpenCoinage; module XMLRPC
     # Returns the server's version number.
     #
     # @return [String] an "x.y.z" version number string
+    # @see    http://opencoinage.org/api/xmlrpc#version
     def version
       raise NotImplementedError, "#{self.class}#version"
     end
@@ -37,6 +38,7 @@ module OpenCoinage; module XMLRPC
     # @param  [Token]
     #   the token to verify
     # @return [Boolean] `true` or `false`
+    # @see    http://opencoinage.org/api/xmlrpc#verify
     def verify(token)
       raise NotImplementedError, "#{self.class}#verify"
     end
@@ -47,6 +49,7 @@ module OpenCoinage; module XMLRPC
     # @param  [Token] token
     #   the token to describe
     # @return [Hash] a key-value mapping describing the token
+    # @see    http://opencoinage.org/api/xmlrpc#describe
     def describe(token)
       raise NotImplementedError, "#{self.class}#describe"
     end
@@ -59,6 +62,7 @@ module OpenCoinage; module XMLRPC
     # @param  [Integer] identifier
     #   a unique identifier for the new token
     # @return [Token] a new token
+    # @see    http://opencoinage.org/api/xmlrpc#reissue
     def reissue(token, identifier = nil)
       raise NotImplementedError, "#{self.class}#reissue"
     end
