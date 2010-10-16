@@ -10,7 +10,7 @@ setup(
   author           = 'OpenCoinage.org',
   author_email     = 'opencoinage@googlegroups.com', # @see http://groups.google.com/group/opencoinage
   url              = 'http://opencoinage.org/',
-  download_url     = 'http://github.com/opencoinage/opencoinage/downloads',
+  download_url     = 'http://pypi.python.org/pypi/opencoinage',
   packages         = ['opencoinage', 'opencoinage.util', 'opencoinage.xmlrpc'],
   classifiers      = [
     'Development Status :: 1 - Planning',
