@@ -15,7 +15,7 @@ public class Base62 {
   /**
    * Encodes a number using Base62 encoding.
    *
-   * @param number a positive integer
+   * @param  number a positive integer
    * @return a Base62 string
    * @throws IllegalArgumentException if <code>number</code> is a negative integer
    */
@@ -33,10 +33,14 @@ public class Base62 {
     return (result.length() == 0) ? DIGITS.substring(0, 1) : result.toString();
   }
 
+  public static String encode(long number) {
+    return encode(BigInteger.valueOf(number));
+  }
+
   /**
    * Decodes a string using Base62 encoding.
    *
-   * @param string a Base62 string
+   * @param  string a Base62 string
    * @return a positive integer
    * @throws IllegalArgumentException if <code>string</code> is empty
    */
