@@ -1,0 +1,6 @@
+include AUTHORS
+include CREDITS
+include UNLICENSE
+include VERSION
+global-exclude .gitignore
+global-exclude .DS_Store
