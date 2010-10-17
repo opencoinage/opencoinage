@@ -20,6 +20,14 @@ class Token(object):
     """Returns `True` if this token contains a digital signature, `False` otherwise."""
     return self.signature != None
 
+  def __eq__(self, other):
+    """Returns `True` if this token is equal to the other given token, `False` otherwise."""
+    return self.identifier == other.identifier and self.signature == other.signature
+
+  def __ne__(self, other):
+    """Returns `True` if this token is not equal to the other given token, `False` otherwise."""
+    return not self.__eq__(other)
+
   def __int__(self):
     """Returns the integer representation of this token."""
     return int(self.identifier)
