@@ -1,3 +1,5 @@
+require 'rsa'
+
 module OpenCoinage
   ##
   # A digital currency token.
@@ -17,13 +19,19 @@ module OpenCoinage
     # @return [Token] the parsed token
     # @raise  [ArgumentError] if `input` is not a Base62 string
     def self.parse(input)
-      identifier, signature = (input = Bitcache.read(input).strip).split(':', 2)
-      signature = nil if signature && signature.empty?
-      if Util::Base62.regexp === identifier && (signature.nil? || Util::Base62.regexp === signature)
-        self.new(Util::Base62.decode(identifier), signature ? Util::Base62.decode(signature) : nil)
-      else
-        raise ArgumentError, "expected a Base62-encoded token, but got #{input.inspect}"
-      end
+      input = Bitcache.read(input).strip
+      raise ArgumentError, "expected a Base62-encoded token, but got #{input.inspect}" unless Util::Base62.regexp === input
+      input = StringIO.new(Util::PKCS1.i2osp(Util::Base62.decode(input)))
+
+      size = input.getc.ord
+      data = input.read(size * 8)
+      identifier = Util::PKCS1.os2ip(data)
+
+      size = input.getc.ord
+      data = size > 0 ? input.read(size * 8) : nil
+      signature = data ? Util::PKCS1.os2ip(data) : nil
+
+      self.new(identifier, signature)
     end
 
     ##
@@ -74,7 +82,19 @@ module OpenCoinage
     #
     # @return [String] a Base62 string
     def to_s
-      to_a.compact.map { |n| Util::Base62.encode(n) }.join(':') # FIXME
+      StringIO.open do |buffer|
+        data = Util::PKCS1.i2osp(identifier)
+        size = (data.size / 8.0).ceil
+        buffer.write([size].pack('C'))
+        buffer.write(data.rjust(size * 8, "\0"))
+
+        data = signed? ? Util::PKCS1.i2osp(signature) : ''
+        size = (data.size / 8.0).ceil
+        buffer.write([size].pack('C'))
+        buffer.write(data.rjust(size * 8, "\0")) unless size.zero?
+
+        Util::Base62.encode(Util::PKCS1.os2ip(buffer.string))
+      end
     end
 
     ##
