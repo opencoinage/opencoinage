@@ -22,4 +22,16 @@ class Token(object):
 
   def __int__(self):
     """Returns the integer representation of this token."""
-    return self.identifier
+    return int(self.identifier)
+
+  def __long__(self):
+    """Returns the integer representation of this token."""
+    return long(self.identifier)
+
+  def __oct__(self):
+    """Returns the octal representation of this token."""
+    return oct(self.identifier) # FIXME
+
+  def __hex__(self):
+    """Returns the hexadecimal representation of this token."""
+    return hex(self.identifier) # FIXME
