@@ -19,8 +19,8 @@ module OpenCoinage
     def self.parse(input)
       identifier, signature = (input = Bitcache.read(input).strip).split(':', 2)
       signature = nil if signature && signature.empty?
-      if Base62.regexp === identifier && (signature.nil? || Base62.regexp === signature)
-        self.new(Base62.decode(identifier), signature ? Base62.decode(signature) : nil)
+      if Util::Base62.regexp === identifier && (signature.nil? || Util::Base62.regexp === signature)
+        self.new(Util::Base62.decode(identifier), signature ? Util::Base62.decode(signature) : nil)
       else
         raise ArgumentError, "expected a Base62-encoded token, but got #{input.inspect}"
       end
@@ -74,7 +74,7 @@ module OpenCoinage
     #
     # @return [String] a Base62 string
     def to_s
-      to_a.compact.map { |n| Base62.encode(n) }.join(':') # FIXME
+      to_a.compact.map { |n| Util::Base62.encode(n) }.join(':') # FIXME
     end
 
     ##
