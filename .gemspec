@@ -6,7 +6,7 @@ GEMSPEC = Gem::Specification.new do |gem|
   gem.date               = File.mtime('VERSION').strftime('%Y-%m-%d')
 
   gem.name               = 'opencoinage'
-  gem.homepage           = 'http://opencoinage.org/'
+  gem.homepage           = 'http://opencoinage.org/sdk/ruby'
   gem.license            = 'Public Domain' if gem.respond_to?(:license=)
   gem.summary            = 'Open-source digital cash.'
   gem.description        = gem.summary

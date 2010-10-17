@@ -9,7 +9,7 @@ setup(
   long_description = open('README').read(),
   author           = 'OpenCoinage.org',
   author_email     = 'opencoinage@googlegroups.com', # @see http://groups.google.com/group/opencoinage
-  url              = 'http://opencoinage.org/',
+  url              = 'http://opencoinage.org/sdk/python',
   download_url     = 'http://pypi.python.org/pypi/opencoinage',
   packages         = ['opencoinage', 'opencoinage.util', 'opencoinage.xmlrpc'],
   classifiers      = [
