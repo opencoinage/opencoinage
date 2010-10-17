@@ -1,0 +1,8 @@
+{
+  "type": "record",
+  "name": "Token", "namespace": "org.opencoinage",
+  "fields": [
+    {"name": "identifier", "type": "bytes"},
+    {"name": "signature",  "type": "bytes"}
+  ]
+}
