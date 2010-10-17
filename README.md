@@ -10,6 +10,7 @@ Dependencies
 * [Ruby][] (>= 1.8.7) or (>= 1.8.1 with [Backports][])
 * [Bitcache](http://rubygems.org/gems/bitcache) (>= 0.0.1)
 * [RDF.rb](http://rubygems.org/gems/rdf) (>= 0.2.3)
+* [RSA.rb](http://rubygems.org/gems/rsa) (>= 0.1.3)
 * [UUID](https://rubygems.org/gems/uuid) (>= 2.3.1)
 
 Installation
